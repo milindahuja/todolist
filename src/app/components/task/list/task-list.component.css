@@ -1,0 +1,11 @@
+/*Created By : Milind Ahuja */
+td{
+	    vertical-align: middle;
+}
+
+@media (min-width: 993px) {
+	.logout-button {
+		display: none;
+	}
+}
+/*Created By : Milind Ahuja */

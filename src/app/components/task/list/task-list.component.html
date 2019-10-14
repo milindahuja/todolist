@@ -1,0 +1,31 @@
+<!-- Created By : Milind Ahuja  -->
+
+<div class="w3-container" *ngIf="taskListData">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>Tasks List <button routerLink="/add" class="w3-button w3-green custom-button"><i class="w3-medium  fa fa-plus"></i> Add New Task</button></h3>
+		<a class="w3-bar-item w3-button logout-button custom-button" (click)="logOut()"><i class="w3-medium fa fa-sign-out"></i>  Logout</a>
+	</div>
+	<span><i class="w3-medium fa fa-search"></i> Search : <input class="" type="text" [(ngModel)]='filterData'></span>
+
+	<div class="w3-panel w3-green" *ngIf="(taskListData | filter:filterData).length === 0">
+		<p>No task found <span *ngIf="filterData"> with search "{{filterData}}"</span> </p>
+	</div>
+	<div class="w3-panel w3-light-grey w3-padding-16 w3-card-2" *ngIf="(taskListData | filter:filterData | filter:filterData).length != 0">
+		<table class="w3-table w3-striped w3-bordered">
+			<tr>
+				<th><i class="w3-medium custom-icon fa fa-tasks"></i> Task</th>
+				<th><i class="w3-medium custom-icon fa fa-file-text"></i> Description</th>
+				<th><i class="w3-medium custom-icon fa fa-question-circle"></i> Status</th>
+				<th><i class="w3-medium custom-icon fa fa-hand-pointer-o "></i> Action</th>
+			</tr>
+			<tr *ngFor="let task of taskListData | filter:filterData; index as i;" appHighlightTask title="Click to update">
+				<td class="pointer" [routerLink]="['detail', task._id]">{{task.title}} </td>
+				<td class="pointer" [routerLink]="['detail', task._id]">{{task.description}}</td>
+				<td class="pointer" [routerLink]="['detail', task._id]">{{task.status}}</td> 
+				<td><button class="w3-btn w3-red" (click)="deleteTask(task._id, task.title)"> <i class="w3-medium fa fa-trash"></i> Delete</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- Created By : Milind Ahuja  -->

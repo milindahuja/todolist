@@ -1,0 +1,22 @@
+<!-- Created By : Milind Ahuja  -->
+
+<div class="w3-container align-center w3-card register-card">
+	<form [formGroup]="registerForm" (ngSubmit)="doRegistration()">
+		<div class="text-center">
+			<img src="assets/milind-logo.png" class="logo">
+		</div>
+
+		<label class="w3-text-blue"><b>Email</b></label>
+		<input class="w3-input w3-border" type="email" formControlName="email">
+		<div class="w3-panel w3-red"  *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)">Please enter valid email address</div> 
+
+		<label class="w3-text-blue"><b>Password</b></label>
+		<input class="w3-input w3-border" type="password" formControlName="password">
+		<div class="w3-panel w3-red"  *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">Password must be at least 6 characters long, and contain a number</div> 
+		<br>
+		<button class="w3-btn w3-blue" type="submit" [disabled]="!registerForm.valid">Register <i class="w3-medium fa fa-check"></i> </button>
+		<p>Already have an account? <a routerLink="/login">Login here</a></p>
+	</form>
+</div>
+
+<!-- Created By : Milind Ahuja  -->
